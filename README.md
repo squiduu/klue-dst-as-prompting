@@ -1,6 +1,5 @@
 # KLUE_DST_as_Prompting
-This is the Korean version implementation of "[Dialogue State Tracking with a Language Model using Schema-Driven Prompting](https://aclanthology.org/2021.emnlp-main.404/)" by [Chia-Hsuan Lee](https://chiahsuan156.github.io/), [Hao Cheng](https://sites.google.com/site/hcheng2site) and [Mari Ostendorf](https://people.ece.uw.edu/ostendorf/) on 
-[KLUE-DST (a.k.a WoS)](https://github.com/KLUE-benchmark/KLUE) dataset.
+This repository is Korean version implementation of "[Dialogue State Tracking with a Language Model using Schema-Driven Prompting](https://aclanthology.org/2021.emnlp-main.404/)" on [KLUE-DST (a.k.a WoS)](https://github.com/KLUE-benchmark/KLUE) dataset.
 
 <p align="center">
   <img src="./sdp-dst.png" width="80%" height="80%">
