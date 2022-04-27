@@ -2,11 +2,11 @@
 This repository is Korean version implementation of "[Dialogue State Tracking with a Language Model using Schema-Driven Prompting](https://aclanthology.org/2021.emnlp-main.404/)" on [KLUE-DST (a.k.a WoS)](https://github.com/KLUE-benchmark/KLUE) dataset.
 
 <p align="center">
-  <img src="./sdp-dst.png" width="80%" height="80%">
+  <img src="./sdp-dst.png" width="70%" height="70%">
 </p>
 
 ## Leaderboard
-**All our scores are calculated with the validation set** because the test set is not open to public. I submitted the codes
+**All our scores are calculated with the validation set because the test set is not open to public**. I submitted the codes
 to the [KLUE-Benchmark](https://klue-benchmark.com/tasks/73/data/download) and I am waiting for the evaluation results
 for the test set.
 |Model|Joint Goal Accuracy|Slot F1-Score|
@@ -22,16 +22,14 @@ The pre-trained LM used in this repository is [KE-T5-base](https://github.com/AI
 ## Installation
 This repository is available in Ubuntu 20.04 LTS, and it is not tested in other OS.
 ```
-conda create -n dst_prompt python=3.7.10
-conda activate dst_prompt
+conda create -n klue_dst python=3.7.10
+conda activate klue_dst
 cd KLUE_DST_as_Prompting
 pip install -r requirements.txt
 ```
 
 ## Download KLUE-DST Dataset
-You can download the dataset from [KLUE-Benchmark](https://klue-benchmark.com/tasks/73/data/download) or the
-following commands.
-
+You can download the dataset with the following commands.
 ```
 cd kluewos11
 wget https://aistages-prod-server-public.s3.amazonaws.com/app/Competitions/000073/data/wos-v1.1.tar.gz
@@ -42,28 +40,28 @@ cd ..
 rm wos-v1.1.tar.gz
 rm -r wos-v1.1
 ```
-Additionally, I put `schema.json` which is made by myself in the `kluewos11` folder for prompt-based fine-tuning.
+Additionally, I put `schema.json` which is made by myself in the `./kluewos11` for prompt-based fine-tuning.
 
 ## Preprocess Data
-You can get `dev.idx`, `dev.json`, `train.idx`, and `train.json` files after pre-processing in the `kluewos11` folder.
+You can get `dev.idx`, `dev.json`, `train.idx`, and `train.json` in the `./kluewos11` after preprocessing.
 ```
 cd ..
 sh preprocess.sh
 ```
 
 ## Prompt-based Fine-tuning
-Please set the arguments `CUDA_VISIBLE_DEVICES`, `gradient_accumulation_steps`, `per_device_train_batch_size`, and `per_device_eval_batch_size` in `train.sh` to suit your learning environment first, and then
+Please set the training arguments `CUDA_VISIBLE_DEVICES`, `--gradient_accumulation_steps`, `--per_device_train_batch_size`, and `--per_device_eval_batch_size` in `train.sh` properly to suit your learning environment first, and then
 ```
 sh train.sh
 ```
-Fine-tuning takes approximately 24 hours on 2 NVIDIA Titan RTX. 
+Fine-tuning takes approximately 24 hours on 2 NVIDIA Titan RTX for 3 epochs, also it can be different for each learning environment.
 
 ## Evaluation 
-Please make prediction `.json` file before evaluation. `--checkpoint_model_path` should be changed by yourself.
+Please make `pred.json` before evaluation. `--checkpoint_model_path` should be changed by yourself.
 ```
 sh postprocess.sh
 ```
-You can get the evaluation scores on your terminal with the prediction `.json` file.
+You can get the evaluation scores on your terminal from the `pred.json`.
 ```
 sh get_metrics.sh
 ```
