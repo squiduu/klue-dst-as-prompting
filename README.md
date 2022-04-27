@@ -17,6 +17,8 @@ for the test set.
 |KLUE-RoBERTa-large|50.22 %|92.23 %|
 |**KE-T5-base (Ours)**|**71.19 %**|**99.25 %**|
 
+The pre-trained LM used in this repository is [KE-T5-base](https://github.com/AIRC-KETI/ke-t5).
+
 ## Installation
 This repository is available in Ubuntu 20.04 LTS, and it is not tested in other OS.
 ```
@@ -66,7 +68,7 @@ You can get the evaluation scores on your terminal with the prediction `.json` f
 sh get_metrics.sh
 ```
 
-## Citation and Contact
+## Reference
 This repository is based on the following paper:
 ```bib
 @inproceedings{lee2021dialogue,
