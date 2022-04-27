@@ -16,7 +16,7 @@ for the test set.
 |KLUE-BERT-base|46.64 %|91.61 %|
 |KLUE-RoBERTa-base|47.49 %|91.64 %|
 |KLUE-RoBERTa-large|50.22 %|92.23 %|
-|**KE-T5-BASE (Ours)**|**71.19 %**|**99.25 %**|
+|**KE-T5-base (Ours)**|**71.19 %**|**99.25 %**|
 
 ## Installation
 This repository is available in Ubuntu 20.04 LTS, and it is not tested in other OS.
