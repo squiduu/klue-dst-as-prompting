@@ -33,7 +33,8 @@ ckpt_params = torch.load('./out/ke_t5b_kluewos11/checkpoint-124014/pytorch_model
 model.resize_token_embeddings(len(tokenizer))
 model.load_state_dict(ckpt_params)
 model.eval()
-
+```
+```python
 # example 1
 dialog_history = "[user] 명동 쇼핑 거리에 대해 물어볼게 있는데 영업시간이랑 입장료, 주소를 알려주세요. \
                   [domain] 관광 가볼 만한 장소 또는 공간을 찾으세요 [slot] 이름 관광지의 이름이 무엇인지"
@@ -41,7 +42,8 @@ input_ids = tokenizer(dialog_history, return_tensors='pt').input_ids
 value = model.generate(input_ids)
 print(tokenizer.decode(value[0], skip_special_tokens=True))
 >>> 명동 쇼핑 거리
-
+```
+```python
 # example 2
 dialog_history = "[user] 서울 북쪽에 경관이 좋은 공원을 찾고 있습니다. [domain] 관광 가볼 만한 장소 또는 공간을 찾으세요 \
                   [slot] 경치 좋은 관광지의 경치가 만족스러운지 [candidates] none, dontcare, yes, no"
