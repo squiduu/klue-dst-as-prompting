@@ -15,9 +15,10 @@ for the test set.
 |KLUE-BERT-base|46.64 %|91.61 %|
 |KLUE-RoBERTa-base|47.49 %|91.64 %|
 |KLUE-RoBERTa-large|50.22 %|92.23 %|
-|**KE-T5-base (Ours)**|**71.19 %**|**99.25 %**|
+|KE-T5-base (Ours)|71.19 %|99.25 %|
+|**Kolang-T5-base (Ours)**|**72.61 %**|**99.37 %**|
 
-The pre-trained LM used in this repository is [KE-T5-base](https://github.com/AIRC-KETI/ke-t5).
+The pre-trained LM used in this repository is [KE-T5-base](https://github.com/AIRC-KETI/ke-t5) and [Kolang-T5-base](https://github.com/seujung/kolang-t5-base).
 
 ## Examples
 ```python
@@ -29,7 +30,7 @@ tokenizer = AutoTokenizer.from_pretrained("KETI-AIR/ke-t5-base")
 model = AutoModelForSeq2SeqLM.from_pretrained("KETI-AIR/ke-t5-base")
 
 # please change the checkpoint path after fine-tuning yourself
-ckpt_params = torch.load('./out/ke_t5b_kluewos11/checkpoint-124014/pytorch_model.bin', map_location='cpu')
+ckpt_params = torch.load('./out/kolang_t5_base_kluewos11/checkpoint-124014/pytorch_model.bin', map_location='cpu')
 model.resize_token_embeddings(len(tokenizer))
 model.load_state_dict(ckpt_params)
 model.eval()
@@ -88,7 +89,7 @@ Please set the training arguments `CUDA_VISIBLE_DEVICES`, `--gradient_accumulati
 ```
 sh train.sh
 ```
-Fine-tuning takes approximately 24 hours on 2 NVIDIA Titan RTX for 3 epochs, also it can be different for each learning environment.
+Fine-tuning takes approximately 30 hours on 2 NVIDIA Titan RTX for 3 epochs, also it can be different for each learning environment.
 
 ## Evaluation 
 Please make `pred.json` before evaluation. `--checkpoint_model_path` should be changed by yourself.
